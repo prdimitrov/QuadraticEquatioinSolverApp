@@ -19,15 +19,16 @@
 
         <EditText
             android:id="@+id/a"
-            android:text="@={equation.a}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="243dp"
+            android:layout_marginTop="324dp"
             android:hint="@string/enter_a"
             android:minHeight="48dp"
+            android:text="@={equation.a}"
             android:textColor="#ffffff"
             android:textColorHint="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -81,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:textColor="#ffffff"
-            android:textSize="32dp"
+            android:textSize="32sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/myButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.quadraticequatioinsolverapp.model;
 
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -60,28 +61,34 @@ public class Equation extends BaseObservable {
 
     public void solveEquation(View view) {
         //Convert Strings to integer
-        int a = Integer.parseInt(getA());
-        int b = Integer.parseInt(getB());
-        int c = Integer.parseInt(getC());
+        try {
+            int a = Integer.parseInt(getA());
+            int b = Integer.parseInt(getB());
+            int c = Integer.parseInt(getC());
 
-        //Calculate the Discriminant
-        double discriminant = b * b - 4 * a * c;
+            //Calculate the Discriminant
+            double discriminant = b * b - 4 * a * c;
 
-        double firstX, secondX;
-        if (discriminant > 0) {
-            // Two real distinct roots
-            firstX = (-b + Math.sqrt(discriminant)) / (2 * a);
-            secondX = (-b - Math.sqrt(discriminant)) / (2 * a);
+            double firstX, secondX;
+            if (discriminant > 0) {
+                // Two real distinct roots
+                firstX = (-b + Math.sqrt(discriminant)) / (2 * a);
+                secondX = (-b - Math.sqrt(discriminant)) / (2 * a);
 
-            // Display the results in the textView
-            binding.myTextView.setText("X1 = " + firstX + " X2 = " + secondX);
-        } else if (discriminant < 0) {
-            //No real roots
-            binding.myTextView.setText("No real roots (complex roots)");
-        } else {
-            // One real solution (double root)
-            firstX = -b / (2 * a);
-            binding.myTextView.setText("X = " + firstX);
+                // Display the results in the textView
+                binding.myTextView.setText("X1 = " + firstX + " X2 = " + secondX);
+            } else if (discriminant < 0) {
+                //No real roots
+                binding.myTextView.setText("No real roots (complex roots)");
+            } else {
+                // One real solution (double root)
+                firstX = -b / (2.0 * a);
+                binding.myTextView.setText("X = " + firstX);
+            }
+
+        } catch (Exception e) {
+            Toast.makeText(view.getContext(), "Enter correct values, please.", Toast.LENGTH_SHORT).show();
         }
+
     }
 }
