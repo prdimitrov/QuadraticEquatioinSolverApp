@@ -3,4 +3,5 @@
     <string name="enter_a">Enter a</string>
     <string name="enter_b">Enter b</string>
     <string name="enter_c">Enter c</string>
+    <string name="result">Result</string>
 </resources>
