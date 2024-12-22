@@ -5,12 +5,13 @@ import android.view.View;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
+import com.example.quadraticequatioinsolverapp.BR;
 import com.example.quadraticequatioinsolverapp.databinding.ActivityMainBinding;
 
 public class Equation extends BaseObservable {
-    private String aSide;
-    private String bSide;
-    private String cSide;
+    private String a;
+    private String b;
+    private String c;
     ActivityMainBinding binding;
 
     public Equation(ActivityMainBinding binding) {
@@ -20,39 +21,48 @@ public class Equation extends BaseObservable {
     public Equation() {
     }
 
-    @Bindable
-    public String getaSide() {
-        return aSide;
-    }
-
-    public void setaSide(String aSide) {
-        this.aSide = aSide;
-
+    public Equation(String a, String b, String c, ActivityMainBinding binding) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.binding = binding;
     }
 
     @Bindable
-    public String getbSide() {
-        return bSide;
+    public String getA() {
+        return a;
     }
 
-    public void setbSide(String bSide) {
-        this.bSide = bSide;
+    public void setA(String a) {
+        this.a = a;
+        notifyPropertyChanged(BR.a);
     }
 
     @Bindable
-    public String getcSide() {
-        return cSide;
+    public String getB() {
+        return b;
     }
 
-    public void setcSide(String cSide) {
-        this.cSide = cSide;
+    public void setB(String b) {
+        this.b = b;
+        notifyPropertyChanged(BR.b);
+    }
+
+    @Bindable
+    public String getC() {
+        return c;
+    }
+
+    public void setC(String c) {
+        this.c = c;
+        notifyPropertyChanged(BR.c);
     }
 
     public void solveEquation(View view) {
         //Convert Strings to integer
-        int a = Integer.parseInt(getaSide());
-        int b = Integer.parseInt(getbSide());
-        int c = Integer.parseInt(getcSide());
+        int a = Integer.parseInt(getA());
+        int b = Integer.parseInt(getB());
+        int c = Integer.parseInt(getC());
 
         //Calculate the Discriminant
         double discriminant = b * b - 4 * a * c;
@@ -60,8 +70,8 @@ public class Equation extends BaseObservable {
         double firstX, secondX;
         if (discriminant > 0) {
             // Two real distinct roots
-            firstX = (-b + Math.sqrt(discriminant)) / a * a;
-            secondX = (-b - Math.sqrt(discriminant)) / a * a;
+            firstX = (-b + Math.sqrt(discriminant)) / (2 * a);
+            secondX = (-b - Math.sqrt(discriminant)) / (2 * a);
 
             // Display the results in the textView
             binding.myTextView.setText("X1 = " + firstX + " X2 = " + secondX);

@@ -4,6 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="equation"
+            type="com.example.quadraticequatioinsolverapp.model.Equation" />
+    </data>
+    
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -12,7 +18,8 @@
         tools:context=".MainActivity">
 
         <EditText
-            android:id="@+id/aSide"
+            android:id="@+id/a"
+            android:text="@={equation.a}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="243dp"
@@ -26,6 +33,7 @@
 
         <EditText
             android:id="@+id/bSide"
+            android:text="@={equation.b}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
@@ -36,10 +44,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/aSide" />
+            app:layout_constraintTop_toBottomOf="@+id/a" />
 
         <EditText
             android:id="@+id/cSide"
+            android:text="@={equation.c}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
@@ -52,7 +61,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bSide" />
 
+<!--        android:onClick="@{equation::solveEquation}"-->
+
         <Button
+            android:onClick="@{equation.solveEquation}"
             android:id="@+id/myButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,7 +80,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:text="@string/result"
             android:textColor="#ffffff"
             android:textSize="32dp"
             app:layout_constraintStart_toStartOf="parent"
